@@ -1,0 +1,63 @@
+header, footer{
+    display: none;
+}
+
+form{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/fondoLogin.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logoCelia{
+    width: 7em;
+}
+
+label{
+    width: 20%;
+}
+
+input{
+    background: transparent;
+    border: 0px solid transparent;
+    border-bottom: 2px solid #044891;
+    color: black;
+    padding: 0.2em;
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+input:focus{
+    outline: none;
+}
+
+input::placeholder{
+    color: black;
+}
+
+input[type="submit"]{
+    width: 10em;
+    background-color: #044891;
+    border: 3px solid #044891;
+    color: white;
+    font-weight: bolder;
+}
+
+input[type="submit"]:hover{
+    background-color: transparent;
+    border: 3px solid #044891;
+    color: #044891;
+}
+
+select{
+    margin-bottom: 2em;
+    border: 1px solid #044891;
+    background-color: gainsboro;
+    border-radius:5px;
+    padding: 0.3em;
+}
