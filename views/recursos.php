@@ -8,7 +8,7 @@ $recursos = new Recursos();
 class Recursos{
 
 public function __construct(){
-    $this -> RecursosController = new RecursosController();
+    $this -> RecursosController = new RecursosModel();
     $this -> header = new Header();
     $this -> pintarRecursos();
 
@@ -40,7 +40,7 @@ public function pintarRecursos(){
                     echo "<th class='p-3' scope='col'></th>";
                 echo "</tr>";
             echo "</thead>";
-            echo "<tbody>";
+            echo "<tbody class='infoRecursos'>";
                 $vistaRecursos = $this -> RecursosController -> verRecursos();
 
                 foreach($vistaRecursos as $recurso){

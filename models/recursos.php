@@ -2,7 +2,7 @@
 
 require_once("conexion.php");
 
-class RecursosController{
+class RecursosModel{
 
     private $conexion;
 
@@ -30,6 +30,14 @@ class RecursosController{
 
     public function eliminarRecursos(){
 
+    }
+
+    public function buscarRecursos($busqueda){
+        $this -> conexion -> conectar();
+        $sql = "SELECT * FROM recursos WHERE nombre LIKE '%$busqueda%' OR descripcion LIKE '%$busqueda%' OR localizacion LIKE '%$busqueda%'";
+        $recursos = $this -> conexion -> obtenerInformacion($sql);
+        $this -> conexion -> cerrar();
+        return $recursos;
     }
 
 
