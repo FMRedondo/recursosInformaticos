@@ -1,11 +1,1 @@
-
-<?php
-include("controller.php");
-
-
-$controller = new Controller();
-
-if (!isset( $_SESSION['idUser'])) {
-   include("views/loginForm.php");
-
-}
+cargar ibdex de la web (lista de recursos pedidos con fecha)
