@@ -6,13 +6,11 @@ class RecursosModel{
 
     private $conexion;
 
-    public function __construct()
-    {
+    public function __construct(){
         $this -> conexion = new MySQLDB();
     }
 
     public function verRecursos(){
-       
         $this -> conexion -> conectar();
         $sql = "SELECT * FROM recursos";
         $recursos = $this -> conexion -> ejecutarSQL($sql);
@@ -20,16 +18,28 @@ class RecursosModel{
         return $recursos;
     }
 
-    public function crearRecursos(){
+    public function crearRecursos($nombre, $descripcion, $lugar, $img){
+        $this -> conexion -> conectar();
+        $sql = "INSERT INTO recursos VALUES (null, $nombre, $descripcion, $lugar, $img)";
+        $this -> conexion -> ejecutarSQL($sql);
+        $ultimoID = $this -> conexion -> obtenerUltimoId();
+        $this -> conexion -> cerrar();
+        return $ultimoID;
+    }
+
+    public function actualizarRecursos($campo, $valor, $id){
+        $this -> conexion -> conectar();
+        $sql = "UPDATE recursos SET $campo = $valor WHERE id = $id";
+        $this -> conexion -> ejecutarSQL($sql);
+        $this -> conexion -> cerrar();
 
     }
 
-    public function actualizarRecursos(){
-
-    }
-
-    public function eliminarRecursos(){
-
+    public function eliminarRecursos($id){
+        $this -> conexion -> conectar();
+        $sql = "DELETE * FROM recursos WHERE id = $id";
+        $this -> conexion -> ejecutarSQL($sql);
+        $this -> conexion -> cerrar();
     }
 
     public function buscarRecursos($busqueda){
@@ -39,7 +49,5 @@ class RecursosModel{
         $this -> conexion -> cerrar();
         return $recursos;
     }
-
-
 
 }
