@@ -56,14 +56,14 @@ class Recursos{
                         $localizacion = $recurso['localizacion'];
                         $imagen = $recurso['imagen'];
 
-                        echo "<tr>";
+                        echo "<tr id='$id'>";
                             echo "<th class='p-3' scope='row' class='p-3'>$id</th>";
                             echo "<td class='p-3'>$nombre</td>";
                             echo "<td class='p-3'>$descripcion</td>";
                             echo "<td class='p-3'>$localizacion</td>";
                             echo "<td class='p-3'>$imagen</td>";
                             echo "<td class='p-3'><a class='btn btn-success'>Editar</a></td>";
-                            echo "<td class='p-3'><a class='btn btn-danger'>Eliminar</a></td>";
+                            echo "<td class='p-3'><a class='btn btn-danger eliminarRecursos' data-id='$id'>Eliminar</a></td>";
                         echo "</tr>";
                     }
 
@@ -82,32 +82,31 @@ class Recursos{
         echo "<section class='panelAñadirRecursos'>";
                     echo "<h2 class='text-center mt-3'>Añadir recurso</h2>";
                     echo "<div class='contenido pt-0'>";
-                       echo "<form id='formularoAñadir'>";
+                       echo "<form id='formularoAñadir' method='post'>";
                                 echo "<div class='form-group mb-4'>";
                                 echo "<label class='mb-2''>Titulo</label>";
-                                echo "<input type='text' class='form-control añadirNombreRecurso' placeholder='Introduce el nombre del recurso'>";
+                                echo "<input type='text' class='form-control añadirNombreRecurso' placeholder='Introduce el nombre del recurso' name='nombre'>";
                             echo "</div>";
                             echo "<div class='form-group mb-4'>";
                                 echo "<label class='mb-2''>Descripción</label>";
-                                echo "<input type='text' class='form-control añadirDescripcionRecurso' placeholder='Introduce la descripcion del recurso'>";
+                                echo "<input type='text' class='form-control añadirDescripcionRecurso' name='descripcion' placeholder='Introduce la descripcion del recurso'>";
                             echo "</div>";
                             echo "<div class='form-group mb-4'>";
                                 echo "<label class='mb-2''>Lugar</label>";
-                                echo "<input type='text' class='form-control añadirLugarRecurso' placeholder='Introduce el lugar del recurso'>";
+                                echo "<input type='text' class='form-control añadirLugarRecurso' name='lugar' placeholder='Introduce el lugar del recurso'>";
                             echo "</div>";
                             
 
                             echo "<div class='form-group mb-4'>";
                                 echo "<label class='mb-2''>Imagen</label>";
-                                echo "<input type='file' name='imagen' class='form-control añadirImagen' id='añadirImagen'>";
+                                echo "<input type='file' name='imagen' class='form-control añadirImagen' id='añadirImagenRecurso'>";
                             echo "</div>";
                             echo "<div class='form-group mb-4'>";
-                                echo "<a class='añadirRecurso btn btn-primary' id='añadirRecurso'>Añadir Recurso</a>";
+                                echo "<input type='submit' class='añadirRecurso btn btn-primary' id='añadirRecurso' value='Crear Recurso'>";
                             echo "</div>";
                        echo "</form>";
                     echo "</div>";
                 echo "</section>";
-
     }
 
 }

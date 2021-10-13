@@ -20,11 +20,11 @@ class RecursosModel{
 
     public function crearRecursos($nombre, $descripcion, $lugar, $img){
         $this -> conexion -> conectar();
-        $sql = "INSERT INTO recursos VALUES (null, $nombre, $descripcion, $lugar, $img)";
+        $sql = "INSERT INTO recursos (nombre, descripcion, localizacion, imagen) VALUES ('$nombre', '$descripcion', '$lugar', '$img')";
         $this -> conexion -> ejecutarSQL($sql);
         $ultimoID = $this -> conexion -> obtenerUltimoId();
         $this -> conexion -> cerrar();
-        return $ultimoID;
+        echo $ultimoID;
     }
 
     public function actualizarRecursos($campo, $valor, $id){
@@ -37,7 +37,7 @@ class RecursosModel{
 
     public function eliminarRecursos($id){
         $this -> conexion -> conectar();
-        $sql = "DELETE * FROM recursos WHERE id = $id";
+        $sql = "DELETE FROM recursos WHERE (id = $id)";
         $this -> conexion -> ejecutarSQL($sql);
         $this -> conexion -> cerrar();
     }
