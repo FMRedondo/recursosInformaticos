@@ -29,7 +29,7 @@ function buscarRecurso(){
 // funcion para visualizar el panel para añadir recursos
 
 $('.botonAgregarRecurso').click(function(){
-    $(".panelAñadirRecursos").toggle();
+    $(".panelAnyadirRecursos").toggle();
     $("#formularoAñadir").submit(añadirRecurso);
 });
 
