@@ -10,7 +10,7 @@ function buscarRecurso(){
 
     $.ajax({
         data: parametros,
-        url: '/recursosInformaticos/controllers/recursosController.php',
+        url: '../../controllers/recursosController.php',
         type: 'post',
 
         success: function (response) {
@@ -57,7 +57,7 @@ function añadirRecurso(){
         $.ajax({
 
             data: parametros,
-            url: '/recursosInformaticos/controllers/recursosController.php',
+            url: '../../controllers/recursosController.php',
             type: 'post',
             
             success: function (response) {
@@ -108,7 +108,7 @@ function eliminarRecurso(){
         $.ajax({
 
             data: parametros,
-            url: '/recursosInformaticos/controllers/recursosController.php',
+            url: '../../controllers/recursosController.php',
             type: 'post',
             
             success: function (response) {
