@@ -79,7 +79,7 @@ class Recursos{
 
     public function tablaAñadir(){
 
-        echo "<section class='panelAnyadirRecursos'>";
+        echo "<section class='panelAñadirRecursos'>";
                     echo "<h2 class='text-center mt-3'>Añadir recurso</h2>";
                     echo "<div class='contenido pt-0'>";
                        echo "<form id='formularoAñadir' method='post'>";
