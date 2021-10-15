@@ -58,9 +58,16 @@ class recursosController{
                 echo "<td class='p-3'><a class='btn btn-danger'>Eliminar</a></td>";
             echo "</tr>";
             
-        }
+        }    
+    }
 
-        
+
+    public function modificarRecurso(){
+        $campo = $_POST['campo'];
+        $valor = $_POST['valor'];
+        $id = $_POST['id'];
+
+        $modificar = $this -> recursosModel -> actualizarRecursos($campo, $valor, $id);
     }
 
 }

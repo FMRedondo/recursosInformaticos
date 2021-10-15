@@ -17,7 +17,7 @@ class Recursos{
 
     public function pintarRecursos(){
             echo "<body>";
-            echo "<link rel='stylesheet' href='/recursosInformaticos/assets/estilos/recursos.css'>";
+            echo "<link rel='stylesheet' href='../assets/estilos/recursos.css'>";
             echo "<div class='w-75 m-auto mt-5 d-flex justify-content-between'>";
                 echo "<div class='w-75'>";
                     echo "<div class='col-auto'>";
@@ -70,7 +70,7 @@ class Recursos{
                 echo "</tbody>";
             echo "</table>";
 
-            echo "<script src='/recursosInformaticos/assets/js/recursos.js'></script>";
+            echo "<script src='../assets/js/recursos.js'></script>";
 
         echo "</body>";
         echo "</html>";
