@@ -10,8 +10,9 @@ class Recursos{
     public function __construct(){
         $this -> RecursosController = new RecursosModel();
         $this -> header = new Header();
-        $this -> pintarRecursos();
         $this -> tablaAñadir();
+        $this -> tablaEditar();
+        $this -> pintarRecursos();
 
     }
 
@@ -58,11 +59,11 @@ class Recursos{
 
                         echo "<tr id='$id'>";
                             echo "<th class='p-3' scope='row' class='p-3'>$id</th>";
-                            echo "<td class='p-3'>$nombre</td>";
-                            echo "<td class='p-3'>$descripcion</td>";
-                            echo "<td class='p-3'>$localizacion</td>";
+                            echo "<td class='p-3 nombre'>$nombre</td>";
+                            echo "<td class='p-3 descripcion'>$descripcion</td>";
+                            echo "<td class='p-3 localizacion'>$localizacion</td>";
                             echo "<td class='p-3'>$imagen</td>";
-                            echo "<td class='p-3'><a class='btn btn-success'>Editar</a></td>";
+                            echo "<td class='p-3'><a class='btn btn-success mostrarEditarRecurso' data-id='$id'>Editar</a></td>";
                             echo "<td class='p-3'><a class='btn btn-danger eliminarRecursos' data-id='$id'>Eliminar</a></td>";
                         echo "</tr>";
                     }
@@ -107,6 +108,19 @@ class Recursos{
                        echo "</form>";
                     echo "</div>";
                 echo "</section>";
+    }
+
+    public function tablaEditar(){
+
+        echo "<section class='panelEditarRecursos'>";
+        echo "<div class='cerrarVentana d-flex flex-row-reverse text-danger h2'>";
+            echo "<i class='far fa-times-circle cerrarEditarRecurso'></i>";
+        echo "</div>";
+            echo "<h2 class='text-center mt-3'>Editar recurso</h2>";
+            echo "<div class='contenidoEditarRecurso pt-0'>";
+
+            echo "</div>";   
+        echo "</section>";
     }
 
 }

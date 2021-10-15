@@ -70,4 +70,38 @@ class recursosController{
         $modificar = $this -> recursosModel -> actualizarRecursos($campo, $valor, $id);
     }
 
+    public function mostrarModificarRecurso(){
+        $id = $_POST['id'];
+        $recursos = $this -> recursosModel -> buscarRecurso($id);
+
+        foreach($recursos as $recurso){
+            $id           = $recurso['id'];
+            $nombre       = $recurso['nombre'];
+            $descripcion  = $recurso['descripcion'];
+            $localizacion = $recurso['localizacion'];
+            $imagen       = $recurso['imagen'];
+
+            echo "<form id='' method='post'>";
+                echo "<div class='form-group mb-4'>";
+                    echo "<label class='mb-2''>Titulo</label>";
+                    echo "<input type='text' class='form-control EditarRecurso ' value='$nombre' name='nombre' data-id='$id' data-campo='nombre'>";
+                echo "</div>";
+                echo "<div class='form-group mb-4'>";
+                    echo "<label class='mb-2''>Descripción</label>";
+                    echo "<input type='text' class='form-control EditarRecurso ' name='descripcion' value='$descripcion' data-id='$id' data-campo='descripcion'>";
+                echo "</div>";
+                echo "<div class='form-group mb-4'>";
+                    echo "<label class='mb-2''>Lugar</label>";
+                    echo "<input type='text' class='form-control EditarRecurso ' name='lugar' value='$localizacion' data-id='$id' data-campo='localizacion'>";
+                echo "</div>";
+                echo "<div class='form-group mb-4'>";
+                    echo "<label class='mb-2''>Imagen</label>";
+                    echo "<input type='file' name='imagen' class='form-control añadirImagen' id='añadirImagenRecurso'>";
+                echo "</div>";
+            echo "</form>";
+            
+        } 
+
+    }
+
 }

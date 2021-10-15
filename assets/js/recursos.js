@@ -125,3 +125,78 @@ function eliminarRecurso(){
 
 }
 
+
+
+$(".mostrarEditarRecurso").click(mostrarEditarRecurso);
+
+function mostrarEditarRecurso(){
+
+    var parametros = {
+        "funcion": 'mostrarModificarRecurso',
+        "id": $(this).data('id'),
+    }
+
+    $.ajax({
+
+            data: parametros,
+            url: '../../controllers/recursosController.php',
+            type: 'post',
+            
+            success: function (response) {
+               // eliminamos el resultado de la pantalla
+               $(".panelEditarRecursos").toggle();
+               $(".contenidoEditarRecurso").empty();
+               $(".contenidoEditarRecurso").append(response);
+               $(".EditarRecurso").change(editarRecurso);
+
+            },
+            error: function (response) {
+                alert("error en la peticion");
+            }
+    });
+
+}
+
+
+// cerrar la ventana de editar recurso
+
+$(".cerrarEditarRecurso").click(cerrarVentanaEditarRecurso);
+
+function cerrarVentanaEditarRecurso(){
+    $(".panelEditarRecursos").toggle();
+    //$(".contenidoEditarRecurso").empty();
+}
+
+
+// Editar Recurso
+
+function editarRecurso(){
+    var parametros = {
+        "funcion": 'modificarRecurso',
+        "id": $(this).data('id'),
+        "valor": $(this).val(),
+        "campo":$(this).data('campo'),
+    }
+
+    var ruta = "#" + $(this).data('id') + " ." + $(this).data('campo');
+    var valor = $(this).val();
+
+    $.ajax({
+
+            data: parametros,
+            url: '../../controllers/recursosController.php',
+            type: 'post',
+            
+            success: function (response) {
+               // eliminamos el resultado de la pantalla
+               
+               $(ruta).empty();
+               $(ruta).append(valor);
+
+            },
+            error: function (response) {
+                alert("error en la peticion");
+            }
+    });
+}
+

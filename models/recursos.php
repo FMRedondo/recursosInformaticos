@@ -29,7 +29,7 @@ class RecursosModel{
 
     public function actualizarRecursos($campo, $valor, $id){
         $this -> conexion -> conectar();
-        $sql = "UPDATE recursos SET $campo = $valor WHERE id = $id";
+        $sql = "UPDATE recursos SET $campo = '$valor' WHERE id = $id";
         $this -> conexion -> ejecutarSQL($sql);
         $this -> conexion -> cerrar();
 
@@ -45,6 +45,14 @@ class RecursosModel{
     public function buscarRecursos($busqueda){
         $this -> conexion -> conectar();
         $sql = "SELECT * FROM recursos WHERE nombre LIKE '%$busqueda%' OR descripcion LIKE '%$busqueda%' OR localizacion LIKE '%$busqueda%'";
+        $recursos = $this -> conexion -> obtenerInformacion($sql);
+        $this -> conexion -> cerrar();
+        return $recursos;
+    }
+
+    public function buscarRecurso($id){
+        $this -> conexion -> conectar();
+        $sql = "SELECT * FROM recursos WHERE (id = $id)";
         $recursos = $this -> conexion -> obtenerInformacion($sql);
         $this -> conexion -> cerrar();
         return $recursos;
