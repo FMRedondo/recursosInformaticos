@@ -24,7 +24,7 @@ class RecursosModel{
         $this -> conexion -> ejecutarSQL($sql);
         $ultimoID = $this -> conexion -> obtenerUltimoId();
         $this -> conexion -> cerrar();
-        echo $ultimoID;
+        return $this -> verRecursos();
     }
 
     public function actualizarRecursos($campo, $valor, $id){

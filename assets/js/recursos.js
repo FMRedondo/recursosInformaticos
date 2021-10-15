@@ -30,7 +30,7 @@ function buscarRecurso(){
 
 $('.botonAgregarRecurso').click(function(){
     $(".panelAñadirRecursos").toggle();
-    $("#formularoAñadir").submit(añadirRecurso);
+    $(".añadirRecurso ").click(añadirRecurso);
 });
 
 
@@ -38,21 +38,20 @@ $('.botonAgregarRecurso').click(function(){
 
 function añadirRecurso(){
     // validamos que todo los datos esten rellenos
-
     var nombreRecurso = $(".añadirNombreRecurso").val();
     var descripcion = $(".añadirDescripcionRecurso").val();
     var lugar = $(".añadirLugarRecurso").val();
-    var imagen = $("#añadirImagenRecurso").files;
+    //var imagen = $("#añadirImagenRecurso").files;
 
-    if(nombreRecurso != "" || descripcion != "" || lugar != ""){
+    
        // Si todos los ampos estan rellenos, realizamos la solicitud ajax
 
        var parametros = {
-        "funcion": 'añadirRecurso',
-        "nombre": nombreRecurso,
-        "descripcion": descripcion, 
-        "lugar": lugar,
-    }
+            "funcion": 'añadirRecurso',
+            "nombre": $(".añadirNombreRecurso").val(),
+            "descripcion": $(".añadirDescripcionRecurso").val(), 
+            "lugar": $(".añadirLugarRecurso").val(),
+         }
 
         $.ajax({
 
@@ -61,34 +60,16 @@ function añadirRecurso(){
             type: 'post',
             
             success: function (response) {
-               // mostramos el nuevo recurso por pantalla
-             
-                alert(response)
-/*
-                var recurso  = "<tr id='" + response + "'>";
-                    recurso += "<th class='p-3' scope='row' class='p-3'>" + response + "</th>";
-                    recurso += "<td class='p-3'>" + "ddd" + "</td>";
-                    recurso += "<td class='p-3'>" + "dd" + "</td>";
-                    recurso += "<td class='p-3'>" + "dd" + "</td>";
-                    recurso += "<td class='p-3'>img/imagen.png</td>";
-                    recurso += "<td class='p-3'><a class='btn btn-success'>Editar</a></td>";
-                    recurso += "<td class='p-3'><a class='btn btn-danger'>Eliminar</a></td>";
-                    recurso += "</tr>";
-*/
-
-               //$(".infoRecursos").append(recurso);
+               // mostramos el nuevo recurso por pantall
+               alert("aquiiiiiii");
+                $(".infoRecursos").empty();
+               $(".infoRecursos").append(response);
             },
 
             error: function (response) {
                 alert("error en la peticion");
             }
-    });
-
-    }
-
-    else{
-        alert("Todos los campos son obligatorios");
-    }
+        });
 }
 
 
