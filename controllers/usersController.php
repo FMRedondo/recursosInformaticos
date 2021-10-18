@@ -1,6 +1,6 @@
 <?php
 
-require_once("../models/user.php");
+require_once("../models/usuarios.php");
 
 $usersContollers = new usersController();
 
@@ -9,14 +9,18 @@ class usersController{
 
     public function __construct()
     {
-        $usersModel = new Ususarios();
-        $this -> obtenerFuncion();
-    }
+        $usersModel = new Usuarios();
+        $this -> userModel = new Usuarios();    }
 
 
     public function obtenerFuncion(){
         $funcion = $_POST['funcion'];
         $this -> $funcion();
+    }
+
+    public function verUsuarios(){
+        $verUsuarios = $this -> userModel -> listarUsuarios();
+        return $verUsuarios;
     }
 
     public function añadirUsuario(){

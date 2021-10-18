@@ -2,7 +2,7 @@
 
 require_once("conexion.php");
 
-class Ususarios{
+class Usuarios{
 
     public function __construct()
     {

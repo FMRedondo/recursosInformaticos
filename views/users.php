@@ -39,36 +39,39 @@ class Recursos{
                 echo "<thead>";
                     echo "<tr>";
                         echo "<th class='p-3' scope='col'>#</th>";
+                        echo "<th class='p-3' scope='col'>Email</th>";
+                        echo "<th class='p-3' scope='col'>Contraseña</th>";
+                        echo "<th class='p-3' scope='col'>Foto</th>";
                         echo "<th class='p-3' scope='col'>Nombre</th>";
-                        echo "<th class='p-3' scope='col'>Descripción</th>";
-                        echo "<th class='p-3' scope='col'>Lugar</th>";
-                        echo "<th class='p-3' scope='col'>imagen</th>";
+                        echo "<th class='p-3' scope='col'>Teléfono</th>";
                         echo "<th class='p-3' scope='col'></th>";
                         echo "<th class='p-3' scope='col'></th>";
                     echo "</tr>";
                 echo "</thead>";
                 echo "<tbody class='infoRecursos'>";
-                   /* $vistaRecursos = $this -> RecursosController -> verRecursos();
+                    $vistaUsuarios = $this -> usersController -> verUsuarios();
 
-                    foreach($vistaRecursos as $recurso){
-                        $id = $recurso['id'];
-                        $nombre = $recurso['nombre'];
-                        $descripcion = $recurso['descripcion'];
-                        $localizacion = $recurso['localizacion'];
-                        $imagen = $recurso['imagen'];
-
-                        echo "<tr id='$id'>";
+                    foreach($vistaUsuarios as $usuario){
+                        $id         = $usuario['id'];
+                        $email      = $usuario['email'];
+                        $contraseña = $usuario['password'];
+                        $foto       = $usuario['photo'];
+                        $nombre     = $usuario['name'];
+                        $telefono   = $usuario['phone'];
+            
+            
+                        echo "<tr>";
                             echo "<th class='p-3' scope='row' class='p-3'>$id</th>";
-                            echo "<td class='p-3 nombre'>$nombre</td>";
-                            echo "<td class='p-3 descripcion'>$descripcion</td>";
-                            echo "<td class='p-3 localizacion'>$localizacion</td>";
-                            echo "<td class='p-3'>$imagen</td>";
-                            echo "<td class='p-3'><a class='btn btn-success mostrarEditarRecurso' data-id='$id'>Editar</a></td>";
-                            echo "<td class='p-3'><a class='btn btn-danger eliminarRecursos' data-id='$id'>Eliminar</a></td>";
+                            echo "<td class='p-3'>$email</td>";
+                            echo "<td class='p-3'>$contraseña</td>";
+                            echo "<td class='p-3'>$foto</td>";
+                            echo "<td class='p-3'>$nombre</td>";
+                            echo "<td class='p-3'>$telefono</td>";
+                            echo "<td class='p-3'><a class='btn btn-success'>Editar</a></td>";
+                            echo "<td class='p-3'><a class='btn btn-danger'>Eliminar</a></td>";
                         echo "</tr>";
-                    }
 
-                    */
+                    }
 
                 echo "</tbody>";
             echo "</table>";
@@ -78,51 +81,6 @@ class Recursos{
         echo "</body>";
         echo "</html>";
 
-    }
-
-    public function tablaAñadir(){
-
-        echo "<section class='panelAñadirRecursos'>";
-                    echo "<h2 class='text-center mt-3'>Añadir recurso</h2>";
-                    echo "<div class='contenido pt-0'>";
-                       echo "<form id='formularoAñadir' method='post'>";
-                                echo "<div class='form-group mb-4'>";
-                                echo "<label class='mb-2''>Titulo</label>";
-                                echo "<input type='text' class='form-control añadirNombreRecurso' placeholder='Introduce el nombre del recurso' name='nombre'>";
-                            echo "</div>";
-                            echo "<div class='form-group mb-4'>";
-                                echo "<label class='mb-2''>Descripción</label>";
-                                echo "<input type='text' class='form-control añadirDescripcionRecurso' name='descripcion' placeholder='Introduce la descripcion del recurso'>";
-                            echo "</div>";
-                            echo "<div class='form-group mb-4'>";
-                                echo "<label class='mb-2''>Lugar</label>";
-                                echo "<input type='text' class='form-control añadirLugarRecurso' name='lugar' placeholder='Introduce el lugar del recurso'>";
-                            echo "</div>";
-                            
-
-                            echo "<div class='form-group mb-4'>";
-                                echo "<label class='mb-2''>Imagen</label>";
-                                echo "<input type='file' name='imagen' class='form-control añadirImagen' id='añadirImagenRecurso'>";
-                            echo "</div>";
-                            echo "<div class='form-group mb-4'>";
-                                echo "<input type='submit' class='añadirRecurso btn btn-primary' id='añadirRecurso' value='Crear Recurso'>";
-                            echo "</div>";
-                       echo "</form>";
-                    echo "</div>";
-                echo "</section>";
-    }
-
-    public function tablaEditar(){
-
-        echo "<section class='panelEditarRecursos'>";
-        echo "<div class='cerrarVentana d-flex flex-row-reverse text-danger h2'>";
-            echo "<i class='far fa-times-circle cerrarEditarRecurso'></i>";
-        echo "</div>";
-            echo "<h2 class='text-center mt-3'>Editar recurso</h2>";
-            echo "<div class='contenidoEditarRecurso pt-0'>";
-
-            echo "</div>";   
-        echo "</section>";
     }
 
 }
