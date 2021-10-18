@@ -9,8 +9,9 @@ class usersController{
 
     public function __construct()
     {
-        $usersModel = new Usuarios();
-        $this -> userModel = new Usuarios();    }
+        $this -> userModel = new Usuarios();    
+        $this -> obtenerFuncion();
+    }
 
 
     public function obtenerFuncion(){
@@ -37,7 +38,7 @@ class usersController{
 
     public function eliminarUsuario(){
         $id = $_POST['id'];
-        $this -> usersModel -> eliminarUsuario($id);
+        $this -> userModel -> eliminarUsuario($id);
     }
 
     public function buscarUsuario(){

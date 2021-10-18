@@ -1,14 +1,14 @@
 <?php
 
 require_once("header.php");
-require_once("../controllers/usersController.php");
+require_once("../models/usuarios.php");
 
-$recursos = new Recursos();
+$usuarios = new Users();
 
-class Recursos{
+class Users{
 
     public function __construct(){
-        $this -> usersController = new usersController();
+        $this -> usersModel = new Usuarios();
         $this -> header = new Header();
         //$this -> tablaAñadir();
         //$this -> tablaEditar();
@@ -23,14 +23,14 @@ class Recursos{
                 echo "<div class='w-75'>";
                     echo "<div class='col-auto'>";
                         echo "<div class='input-group mb-2'>";
-                            echo "<input type='text' class='form-control inputBusqueda' id='inlineFormInputGroup' placeholder='Buscar recursos'>";
+                            echo "<input type='text' class='form-control inputBusqueda' id='inlineFormInputGroup' placeholder='Buscar usuario'>";
                             echo "<div class='input-group-prepend'>";
                                 echo "<div class='input-group-text p-3'><i class='fas fa-search'></i></div>";
                             echo "</div>";
                         echo "</div>";
                     echo "</div>";
                 echo "</div>";
-                echo "<div class='input-group-prepend w-5 botonAgregarRecurso'>";
+                echo "<div class='input-group-prepend w-5 botonAgregarUsuario'>";
                     echo "<div class='input-group-text p-3 bg-primary text-white'><i class='fas fa-plus'></i></div>";
                 echo "</div>";
             echo "</div>";
@@ -48,8 +48,8 @@ class Recursos{
                         echo "<th class='p-3' scope='col'></th>";
                     echo "</tr>";
                 echo "</thead>";
-                echo "<tbody class='infoRecursos'>";
-                    $vistaUsuarios = $this -> usersController -> verUsuarios();
+                echo "<tbody class='infoUsuarios'>";
+                    $vistaUsuarios = $this  -> usersModel -> listarUsuarios();
 
                     foreach($vistaUsuarios as $usuario){
                         $id         = $usuario['id'];
@@ -60,7 +60,7 @@ class Recursos{
                         $telefono   = $usuario['phone'];
             
             
-                        echo "<tr>";
+                        echo "<tr id='$id'>";
                             echo "<th class='p-3' scope='row' class='p-3'>$id</th>";
                             echo "<td class='p-3'>$email</td>";
                             echo "<td class='p-3'>$contraseña</td>";
@@ -68,7 +68,7 @@ class Recursos{
                             echo "<td class='p-3'>$nombre</td>";
                             echo "<td class='p-3'>$telefono</td>";
                             echo "<td class='p-3'><a class='btn btn-success'>Editar</a></td>";
-                            echo "<td class='p-3'><a class='btn btn-danger'>Eliminar</a></td>";
+                            echo "<td class='p-3'><a class='btn btn-danger eliminarUsuario' data-id='$id'>Eliminar</a></td>";
                         echo "</tr>";
 
                     }
@@ -76,7 +76,7 @@ class Recursos{
                 echo "</tbody>";
             echo "</table>";
 
-            echo "<script src='../assets/js/recursos.js'></script>";
+            echo "<script src='../assets/js/usuarios.js'></script>";
 
         echo "</body>";
         echo "</html>";
