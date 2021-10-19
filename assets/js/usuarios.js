@@ -26,3 +26,30 @@ function eliminarUsario(){
             }
     });
 }
+
+$(".busquedaUsuario").keyup(buscarUsuario);
+
+function buscarUsuario(){
+    var parametros = {
+        "funcion": 'buscarUsuario',
+        "busqueda": $(this).val(),
+    }
+
+        $.ajax({
+
+            data: parametros,
+            url: '../../controllers/usersController.php',
+            type: 'post',
+            
+            success: function (response) {
+               $(".infoUsuarios").empty();
+               $(".infoUsuarios").append(response);
+
+               $(".eliminarUsuario").click(eliminarUsario);
+
+            },
+            error: function (response) {
+                alert("error en la peticion");
+            }
+    });
+}

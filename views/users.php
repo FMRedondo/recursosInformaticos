@@ -23,7 +23,7 @@ class Users{
                 echo "<div class='w-75'>";
                     echo "<div class='col-auto'>";
                         echo "<div class='input-group mb-2'>";
-                            echo "<input type='text' class='form-control inputBusqueda' id='inlineFormInputGroup' placeholder='Buscar usuario'>";
+                            echo "<input type='text' class='form-control busquedaUsuario' id='inlineFormInputGroup' placeholder='Buscar usuario'>";
                             echo "<div class='input-group-prepend'>";
                                 echo "<div class='input-group-text p-3'><i class='fas fa-search'></i></div>";
                             echo "</div>";

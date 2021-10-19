@@ -32,7 +32,7 @@ class usersController{
         $nombre = $_POST['nombre'];
         $telefono = $_POST['telefono'];
 
-        $this -> usersModel -> añadirUsuario($email, $contraseña, $foto, $nombre, $telefono);
+        $this -> userModel -> añadirUsuario($email, $contraseña, $foto, $nombre, $telefono);
 
     }
 
@@ -43,15 +43,15 @@ class usersController{
 
     public function buscarUsuario(){
         $busqueda = $_POST['busqueda'];
-        $busquedaUsuario = $this -> usersModel -> buscarUsuarios($busqueda);
+        $busquedaUsuario = $this -> userModel -> buscarUsuarios($busqueda);
 
         foreach($busquedaUsuario as $usuario){
             $id = $usuario['id'];
             $email = $usuario['email'];
-            $contraseña = $_POST['password'];
+            $contraseña = $usuario['password'];
             $foto = $usuario['photo'];
             $nombre = $usuario['name'];
-            $telefono = $_POST['phone'];
+            $telefono = $usuario['phone'];
 
 
             echo "<tr>";
@@ -75,7 +75,7 @@ class usersController{
         $campo = $_POST['campo'];
         $valor = $_POST['valor'];
 
-        $this -> usersModel -> editarUsuario($id, $campo, $valor);
+        $this -> userModel -> editarUsuario($id, $campo, $valor);
     }
 
 
