@@ -7,10 +7,10 @@ if (isset($data['infoMsg'])) {
     echo "<p style='color:blue'>" . $data['infoMsg'] . "</p>";
 }
 
-echo "<link rel='stylesheet' href='/recursosInformaticos/assets/estilos/login.css'>";
+echo "<link rel='stylesheet' href='/assets/estilos/login.css'>";
 
 echo "<form action='index.php'>
-        <img src='/recursosInformaticos/assets/img/escudo.png' alt='escudo celia' class='logoCelia'>
+        <img src='/assets/img/escudo.png' alt='escudo celia' class='logoCelia'>
         <label>
             <input type='text' name='email' placeholder='Introduce tu usuario'>
         </label>
