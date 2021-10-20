@@ -79,4 +79,44 @@ class usersController{
     }
 
 
+    public function mostrarModificarUsuario(){
+        $id = $_POST['id'];
+        $usuarios = $this -> userModel -> buscarUsuario($id);
+
+        foreach($usuarios as $usuario){
+            $id         = $usuario['id'];
+            $email      = $usuario['email'];
+            $contraseña = $usuario['password'];
+            $foto       = $usuario['photo'];
+            $nombre     = $usuario['name'];
+            $telefono   = $usuario['phone'];
+
+            echo "<form id='' method='post'>";
+                echo "<div class='form-group mb-4'>";
+                    echo "<label class='mb-2''>Email</label>";
+                    echo "<input type='text' class='form-control editarUsuario ' value='$email' name='email' data-id='$id' data-campo='email'>";
+                echo "</div>";
+
+                echo "<div class='form-group mb-4'>";
+                    echo "<label class='mb-2''>Contraseña</label>";
+                    echo "<input type='text' class='form-control editarUsuario ' value='$contraseña' name='password' data-id='$id' data-campo='password'>";
+                echo "</div>";
+
+                echo "<div class='form-group mb-4'>";
+                    echo "<label class='mb-2''>Nombre</label>";
+                    echo "<input type='text' class='form-control editarUsuario ' value='$nombre' name='name' data-id='$id' data-campo='name'>";
+                echo "</div>";
+
+                echo "<div class='form-group mb-4'>";
+                    echo "<label class='mb-2''>Telefono</label>";
+                    echo "<input type='text' class='form-control editarUsuario ' value='$telefono' name='phone' data-id='$id' data-campo='phone'>";
+                echo "</div>";
+                
+                
+            echo "</form>";
+            
+        } 
+
+    }
+
 }

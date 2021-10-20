@@ -10,15 +10,15 @@ class Users{
     public function __construct(){
         $this -> usersModel = new Usuarios();
         $this -> header = new Header();
-        //$this -> tablaAñadir();
-        //$this -> tablaEditar();
+        $this -> tablaAñadir();
+        $this -> tablaEditar();
         $this -> pintarUsuarios();
 
     }
 
     public function pintarUsuarios(){
             echo "<body>";
-            echo "<link rel='stylesheet' href='../assets/estilos/recursos.css'>";
+            echo "<link rel='stylesheet' href='../assets/estilos/usuarios.css'>";
             echo "<div class='w-75 m-auto mt-5 d-flex justify-content-between'>";
                 echo "<div class='w-75'>";
                     echo "<div class='col-auto'>";
@@ -62,12 +62,12 @@ class Users{
             
                         echo "<tr id='$id'>";
                             echo "<th class='p-3' scope='row' class='p-3'>$id</th>";
-                            echo "<td class='p-3'>$email</td>";
-                            echo "<td class='p-3'>$contraseña</td>";
-                            echo "<td class='p-3'>$foto</td>";
-                            echo "<td class='p-3'>$nombre</td>";
-                            echo "<td class='p-3'>$telefono</td>";
-                            echo "<td class='p-3'><a class='btn btn-success'>Editar</a></td>";
+                            echo "<td class='p-3 email'>$email</td>";
+                            echo "<td class='p-3 password'>$contraseña</td>";
+                            echo "<td class='p-3 photo'>$foto</td>";
+                            echo "<td class='p-3 name'>$nombre</td>";
+                            echo "<td class='p-3 phone'>$telefono</td>";
+                            echo "<td class='p-3'><a class='btn btn-success mostrarEditarUsuario' data-id='$id'>Editar</a></td>";
                             echo "<td class='p-3'><a class='btn btn-danger eliminarUsuario' data-id='$id'>Eliminar</a></td>";
                         echo "</tr>";
 
@@ -82,5 +82,63 @@ class Users{
         echo "</html>";
 
     }
+
+
+    public function tablaAñadir(){
+        echo "<section class='panelAñadirUsuario'>";
+                    echo "<h2 class='text-center mt-3'>Añadir usuario</h2>";
+                    echo "<div class='contenido pt-0'>";
+                       echo "<form id='formularoAñadir' method='post'>";
+                            echo "<div class='form-group mb-4'>";
+                                echo "<label class='mb-2''>Email</label>";
+                                echo "<input type='text' class='form-control añadirEmailUsuario' placeholder='Introduce el email del usuario' name='email'>";
+                            echo "</div>";
+
+                            echo "<div class='form-group mb-4'>";
+                                echo "<label class='mb-2''>Contraseña</label>";
+                                echo "<input type='text' class='form-control añadirContraseñaUsuario' placeholder='Introduce la contraseña del usuario' name='contraseña'>";
+                            echo "</div>";
+
+                            echo "<div class='form-group mb-4'>";
+                                echo "<label class='mb-2''>Nombre</label>";
+                                echo "<input type='text' class='form-control añadirNombreUsuario' placeholder='Introduce el nombre del usuario' name='nombre'>";
+                            echo "</div>";
+
+                            echo "<div class='form-group mb-4'>";
+                                echo "<label class='mb-2''>Telefono</label>";
+                                echo "<input type='text' class='form-control añadirTelefonoUsuario' placeholder='Introduce el telefono del usuario' name='telefono'>";
+                            echo "</div>";
+                            
+                            
+                            
+
+                            echo "<div class='form-group mb-4'>";
+                                echo "<label class='mb-2''>Imagen</label>";
+                                echo "<input type='file' name='imagen' class='form-control añadirImagen' id='añadirImagenUsuario'>";
+                            echo "</div>";
+                            echo "<div class='form-group mb-4'>";
+                                echo "<input type='submit' class='añadirUsuario btn btn-primary' id='añadirUsuario' value='añadir usuario'>";
+                            echo "</div>";
+                       echo "</form>";
+                    echo "</div>";
+                echo "</section>";
+    }
+
+    public function tablaEditar(){
+        echo "<section class='panelEditarUsuarios'>";
+        echo "<div class='cerrarVentana d-flex flex-row-reverse text-danger h2'>";
+            echo "<i class='far fa-times-circle cerrarEditarUsuario'></i>";
+        echo "</div>";
+            echo "<h2 class='text-center mt-3'>Editar usuario</h2>";
+            echo "<div class='contenidoEditarUsuario pt-0'>";
+
+            echo "</div>";   
+        echo "</section>";
+    }
+
+
+
+
+
 
 }
