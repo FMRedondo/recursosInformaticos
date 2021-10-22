@@ -1,20 +1,26 @@
 <?php
 
-require_once("../models/recursos.php");
+require_once("models/recursos.php");
+require_once("views/recursos.php");
 
-$recurso = new recursosController();
 
 class recursosController{
 
     public function __construct()
     {
         $this -> recursosModel = new RecursosModel();
-        $this -> obtenerFuncion();
+        //$this -> obtenerFuncion();
     }
 
     public function obtenerFuncion(){
         $funcion = $_POST['funcion'];
         $this -> $funcion();
+    }
+
+
+    public function verVista(){
+        $verRecursos = new Recursos();
+        $verRecursos -> pintarRecursos();
     }
 
 

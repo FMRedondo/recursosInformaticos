@@ -32,7 +32,7 @@ class Header
                                 echo "<a class='nav-link' href='/'>Inicio</a>";
                             echo "</li>";
                             echo "<li class='nav-item'>";
-                                echo "<a class='nav-link' href='/views/recursos.php'>Recursos</a>";
+                                echo "<a class='nav-link' href='/recursos'>Recursos</a>";
                             echo "</li>";
                             echo "<li class='nav-item'>";
                             echo "<a class='nav-link' href='/views/users.php'>Usuarios</a>";

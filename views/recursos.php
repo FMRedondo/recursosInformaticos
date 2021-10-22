@@ -1,18 +1,15 @@
 <?php
 
 require_once("header.php");
-require_once("../models/recursos.php");
+require_once("models/recursos.php");
 
-$recursos = new Recursos();
 
 class Recursos{
 
     public function __construct(){
         $this -> RecursosController = new RecursosModel();
         $this -> header = new Header();
-        $this -> tablaAñadir();
-        $this -> tablaEditar();
-        $this -> pintarRecursos();
+        //$this -> pintarRecursos();
 
     }
 
@@ -70,6 +67,9 @@ class Recursos{
 
                 echo "</tbody>";
             echo "</table>";
+
+            $this -> tablaAñadir();
+            $this -> tablaEditar();
 
             echo "<script src='../assets/js/recursos.js'></script>";
 

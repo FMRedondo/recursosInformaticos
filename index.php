@@ -1,13 +1,6 @@
 <?php
 
-require_once("views/header.php");
+require_once("route.php");
 
-$index = new Index();
+$route = new Route();
 
-class Index{
-    public function __construct()
-    {
-        $header = new Header();
-        echo "cargar ibdex de la web (lista de recursos pedidos con fecha)";
-    }
-}

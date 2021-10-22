@@ -1,6 +1,7 @@
 <?php
 
-require_once("../models/usuarios.php");
+require_once("models/usuarios.php");
+require_once("models/security.php");
 
 $usersContollers = new usersController();
 
@@ -10,7 +11,7 @@ class usersController{
     public function __construct()
     {
         $this -> userModel = new Usuarios();    
-        $this -> obtenerFuncion();
+        //$this -> obtenerFuncion();
     }
 
 
@@ -118,5 +119,38 @@ class usersController{
         } 
 
     }
+
+/*
+
+    public function procesarLogin()
+    {
+        // Validación del formulario
+
+        $email = $_POST['email'];
+        $contraseña = $_POST['contraseña'];
+
+        if (Security::filter($email) == "" || Security::filter($contraseña) == "") {
+            // Algún campo del formulario viene vacío: volvemos a mostrar el login
+            $data['errorMsg'] = "El email y la contraseña son obligatorios";
+            $this->view->show("loginForm", $data);
+        }
+        else {
+            // Hemos pasado la validación del formulario: vamos a procesarlo
+            $email = Security::filter($email);
+            $pass = Security::filter($contraseña);
+            $userData = $this -> user -> checkLogin($email, $pass);
+            if ($userData!=null) {
+                // Login correcto: creamos la sesión y pedimos al usuario que elija su rol
+                Security::createSession($userData->id);
+                //$this->SelectUserRolForm();
+            }
+            else {
+                $data['errorMsg'] = "Usuario o contraseña incorrectos";
+                $this->view->show("loginForm", $data);
+            }
+        }
+    }
+
+    */
 
 }

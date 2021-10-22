@@ -1,8 +1,9 @@
 <?php
 
-include ("view.php");
-include ("models/user.php");
-include ("models/security.php");
+require_once ("view.php");
+require_once ("models/user.php");
+require_once ("models/security.php");
+require_once("views/error404.php");
 
 class Controller
 {
@@ -107,5 +108,9 @@ class Controller
             $data['errorMsg'] = 'No tienes permisos para hacer eso';
             $this->view->show("loginForm", $data);
         }
+    }
+
+    public function error404(){
+        $error404 = new ErrorVista();
     }
 }
