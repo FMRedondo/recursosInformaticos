@@ -10,7 +10,7 @@ function buscarRecurso(){
 
     $.ajax({
         data: parametros,
-        url: '../../controllers/recursosController.php',
+        url: '/recursos/search',
         type: 'post',
 
         success: function (response) {
@@ -47,7 +47,6 @@ function añadirRecurso(){
        // Si todos los ampos estan rellenos, realizamos la solicitud ajax
 
        var parametros = {
-            "funcion": 'añadirRecurso',
             "nombre": $(".añadirNombreRecurso").val(),
             "descripcion": $(".añadirDescripcionRecurso").val(), 
             "lugar": $(".añadirLugarRecurso").val(),
@@ -56,7 +55,7 @@ function añadirRecurso(){
         $.ajax({
 
             data: parametros,
-            url: '../../controllers/recursosController.php',
+            url: '/recursos/add',
             type: 'post',
             
             success: function (response) {
@@ -82,14 +81,13 @@ function eliminarRecurso(){
     var id = $(this).data('id');
 
     var parametros = {
-        "funcion": 'eliminarRecurso',
         "id": id,
     }
 
         $.ajax({
 
             data: parametros,
-            url: '../../controllers/recursosController.php',
+            url: '/recursos/delete',
             type: 'post',
             
             success: function (response) {
@@ -120,7 +118,7 @@ function mostrarEditarRecurso(){
     $.ajax({
 
             data: parametros,
-            url: '../../controllers/recursosController.php',
+            url: '/recursos/Depedit',
             type: 'post',
             
             success: function (response) {
@@ -165,7 +163,7 @@ function editarRecurso(){
     $.ajax({
 
             data: parametros,
-            url: '../../controllers/recursosController.php',
+            url: '/recursos/edit',
             type: 'post',
             
             success: function (response) {

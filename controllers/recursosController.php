@@ -23,6 +23,10 @@ class recursosController{
         $verRecursos -> pintarRecursos();
     }
 
+    public function verEditarRecurso(){
+        
+    }
+
 
     public function añadirRecurso(){
 
