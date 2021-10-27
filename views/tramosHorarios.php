@@ -21,7 +21,8 @@ class TramosHorarios{
         echo "<script src='assets/js/horarios.js'></script>";
         echo "<script src='assets/plugin/calendario/lib/main.js'></script>";
         echo "<link rel='stylesheet' href='assets/plugin/calendario/lib/main.css'>";
-
+        echo "<link rel='stylesheet' href='assets/estilos/horarios.css'>";
+        echo "<script src='assets/plugin/calendario/examples/js/theme-chooser.js'></script>";
         
     }
 

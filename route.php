@@ -30,6 +30,12 @@ class Route{
 
             // rutas para recursos
 
+            case $segmento[0] == "":
+
+                $horariosController = new TramosHorariosController();
+                $horariosController -> verCalendario();
+                
+            break;
 
             case $segmento[0] == "recursos":
 
@@ -107,12 +113,7 @@ class Route{
 
         break;
 
-        case $segmento[0] == "":
-
-            $horariosController = new TramosHorariosController();
-            $horariosController -> verCalendario();
-            
-        break;
+        
 
 
 

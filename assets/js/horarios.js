@@ -4,4 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
       initialView: 'dayGridMonth'
     });
     calendar.render();
+
+    
   });
