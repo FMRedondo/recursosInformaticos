@@ -63,7 +63,7 @@ function añadirRecurso(){
             
             success: function (response) {
                // mostramos el nuevo recurso por pantall
-               alert("aquiiiiiii");
+
                 $(".infoRecursos").empty();
                $(".infoRecursos").append(response);
             },

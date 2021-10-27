@@ -58,14 +58,14 @@ class recursosController{
             $localizacion = $recurso['localizacion'];
             $imagen       = $recurso['imagen'];
 
-            echo "<tr>";
+            echo "<tr id='$id'>";
                 echo "<th class='p-3' scope='row' class='p-3'>$id</th>";
-                echo "<td class='p-3'>$nombre</td>";
-                echo "<td class='p-3'>$descripcion</td>";
-                echo "<td class='p-3'>$localizacion</td>";
+                echo "<td class='p-3 nombre'>$nombre</td>";
+                echo "<td class='p-3 descripcion'>$descripcion</td>";
+                echo "<td class='p-3 localizacion'>$localizacion</td>";
                 echo "<td class='p-3'>$imagen</td>";
-                echo "<td class='p-3'><a class='btn btn-success'>Editar</a></td>";
-                echo "<td class='p-3'><a class='btn btn-danger'>Eliminar</a></td>";
+                echo "<td class='p-3'><a class='btn btn-success mostrarEditarRecurso' data-id='$id'>Editar</a></td>";
+                echo "<td class='p-3'><a class='btn btn-danger eliminarRecursos' data-id='$id'>Eliminar</a></td>";
             echo "</tr>";
             
         }    
