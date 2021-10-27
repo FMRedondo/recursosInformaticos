@@ -47,9 +47,9 @@ class Usuarios{
         $this -> conexion -> cerrar();
     }
 
-    public function crearUsuario($email, $contraseña, $foto, $nombre, $telefono){
+    public function crearUsuario($email, $contraseña, $nombre, $telefono){
         $this -> conexion -> conectar();
-        $sql = "INSERT INTO recursos (email, password, photo, name, phone) VALUES ('$email', '$contraseña', '$foto', '$nombre', '$telefono')";
+        $sql = "INSERT INTO users (email, password, name, phone) VALUES ('$email', '$contraseña', '$nombre', '$telefono')";
         $this -> conexion -> ejecutarSQL($sql);
         $ultimoID = $this -> conexion -> obtenerUltimoId();
         $this -> conexion -> cerrar();

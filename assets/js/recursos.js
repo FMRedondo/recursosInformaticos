@@ -16,6 +16,9 @@ function buscarRecurso(){
         success: function (response) {
             $(".infoRecursos").empty();
             $(".infoRecursos").append(response);
+
+            $(".eliminarRecursos").click(eliminarRecurso);
+            $(".mostrarEditarRecurso").click(mostrarEditarRecurso);
         },
 
         error: function (response) {

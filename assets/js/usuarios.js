@@ -12,7 +12,7 @@ function eliminarUsario(){
         $.ajax({
 
             data: parametros,
-            url: '../../controllers/usersController.php',
+            url: 'usuarios/delete',
             type: 'post',
             
             success: function (response) {
@@ -31,20 +31,20 @@ $(".busquedaUsuario").keyup(buscarUsuario);
 
 function buscarUsuario(){
     var parametros = {
-        "funcion": 'buscarUsuario',
         "busqueda": $(this).val(),
     }
 
         $.ajax({
 
             data: parametros,
-            url: '../../controllers/usersController.php',
+            url: 'usuarios/search',
             type: 'post',
             
             success: function (response) {
                $(".infoUsuarios").empty();
                $(".infoUsuarios").append(response);
 
+               $(".mostrarEditarUsuario").click(mostrarEditarUsuario);
                $(".eliminarUsuario").click(eliminarUsario);
 
             },
@@ -52,14 +52,46 @@ function buscarUsuario(){
                 alert("error en la peticion");
             }
     });
+
+    
 }
 
 // añadir usuario
 
 $('.botonAgregarUsuario').click(function(){
     $(".panelAñadirUsuario").toggle();
-    $(".añadirUsuario ").click(añadirRecurso);
+    $(".añadirUsuario ").click(añadirUsuario);
 });
+
+
+function añadirUsuario(){
+
+       var parametros = {
+            "email": $(".añadirEmailUsuario").val(),
+            "contraseña": $(".añadirContraseñaUsuario").val(), 
+            "nombre": $(".añadirNombreUsuario").val(),
+            "telefono": $(".añadirTelefonoUsuario").val(),
+         }
+         
+
+        $.ajax({
+
+            data: parametros,
+            url: 'usuarios/add',
+            type: 'post',
+            
+            success: function (response) {
+               // mostramos el nuevo recurso por pantall
+               alert(response)
+                $(".infoRecursos").empty();
+               $(".infoRecursos").append(response);
+            },
+
+            error: function (response) {
+                alert("error en la peticion. No se ha podido añadir el usuario");
+            }
+        });
+}
 
 // Editar usuarios
 
@@ -68,14 +100,13 @@ $(".mostrarEditarUsuario").click(mostrarEditarUsuario);
 function mostrarEditarUsuario(){
 
     var parametros = {
-        "funcion": 'mostrarModificarUsuario',
         "id": $(this).data('id'),
     }
 
     $.ajax({
 
             data: parametros,
-            url: '../../controllers/usersController.php',
+            url: 'usuarios/Depedit',
             type: 'post',
             
             success: function (response) {
@@ -103,13 +134,12 @@ function editarUsuario(){
     }
 
     var ruta = "#" + $(this).data('id') + " ." + $(this).data('campo');
-    alert(ruta)
     var valor = $(this).val();
 
     $.ajax({
 
             data: parametros,
-            url: '../../controllers/usersController.php',
+            url: 'usuarios/edit',
             type: 'post',
             
             success: function (response) {

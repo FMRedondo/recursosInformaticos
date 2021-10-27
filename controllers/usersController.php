@@ -1,9 +1,9 @@
 <?php
 
 require_once("models/usuarios.php");
-require_once("models/security.php");
+require_once("views/users.php");
+//require_once("models/security.php");
 
-$usersContollers = new usersController();
 
 
 class usersController{
@@ -12,6 +12,11 @@ class usersController{
     {
         $this -> userModel = new Usuarios();    
         //$this -> obtenerFuncion();
+    }
+
+    public function verVista(){
+        $usuarios = new Users();
+        $usuarios -> pintarUsuarios();
     }
 
 
@@ -29,11 +34,10 @@ class usersController{
 
         $email = $_POST['email'];
         $contraseña = $_POST['contraseña'];
-        $foto = $_POST['foto'];
         $nombre = $_POST['nombre'];
         $telefono = $_POST['telefono'];
 
-        $this -> userModel -> añadirUsuario($email, $contraseña, $foto, $nombre, $telefono);
+        $this -> userModel -> crearUsuario($email, $contraseña, $nombre, $telefono);
 
     }
 
@@ -55,15 +59,15 @@ class usersController{
             $telefono = $usuario['phone'];
 
 
-            echo "<tr>";
+            echo "<tr id='$id'>";
                 echo "<th class='p-3' scope='row' class='p-3'>$id</th>";
-                echo "<td class='p-3'>$email</td>";
-                echo "<td class='p-3'>$contraseña</td>";
-                echo "<td class='p-3'>$foto</td>";
-                echo "<td class='p-3'>$nombre</td>";
-                echo "<td class='p-3'>$telefono</td>";
-                echo "<td class='p-3'><a class='btn btn-success'>Editar</a></td>";
-                echo "<td class='p-3'><a class='btn btn-danger'>Eliminar</a></td>";
+                echo "<td class='p-3 email'>$email</td>";
+                echo "<td class='p-3 password'>$contraseña</td>";
+                echo "<td class='p-3 photo'>$foto</td>";
+                echo "<td class='p-3 name'>$nombre</td>";
+                echo "<td class='p-3 phone'>$telefono</td>";
+                echo "<td class='p-3'><a class='btn btn-success mostrarEditarUsuario' data-id='$id'>Editar</a></td>";
+                echo "<td class='p-3'><a class='btn btn-danger eliminarUsuario' data-id='$id'>Eliminar</a></td>";
             echo "</tr>";
 
         }

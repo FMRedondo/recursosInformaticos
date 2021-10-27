@@ -1,6 +1,7 @@
 <?php
 
 require_once("controllers/recursosController.php");
+require_once("controllers/usersController.php");
 require_once("controller.php");
 
 
@@ -32,7 +33,7 @@ class Route{
                 $recursosController = new recursosController();
                 
                 switch($numSeg){
-                    case $numSeg == 1 && $uri == "recursos":
+                    case $numSeg == 1 && $uri == "recursos" || $uri == "recursos/":
                         $recursosController -> verVista();
                     break;
 
@@ -70,39 +71,37 @@ class Route{
         case $segmento[0] == "usuarios":
 
             $numSeg = count($segmento);
-            $recursosController = new recursosController();
+            $usuarioController = new usersController();
             
             switch($numSeg){
-                case $numSeg == 1 && $uri == "usuarios":
-                    $recursosController -> verVista();
+                case $numSeg == 1 && $uri == "usuarios" || $uri == "usuarios/":
+                    $usuarioController -> verVista();
                 break;
 
                 case $numSeg == 2 && $this -> segmentos[1] == "Depedit":
-                    $recursosController -> mostrarModificarRecurso();
+                    $usuarioController -> mostrarModificarUsuario();
                 break;
 
                 case $numSeg == 2 && $this -> segmentos[1] == "edit":
-                    $recursosController -> modificarRecurso();
+                    $usuarioController -> modificarUsuario();
                 break;
 
                 case $numSeg == 2 && $this -> segmentos[1] == "delete":
-                    $recursosController -> eliminarRecurso();
+                    $usuarioController -> eliminarUsuario();
                 break;
 
                 case $numSeg == 2 && $this -> segmentos[1] == "add":
-                    $recursosController -> añadirRecurso();
+                    $usuarioController -> añadirUsuario();
                 break;
 
                 case $numSeg == 2 && $this -> segmentos[1] == "search":
-                    $recursosController -> buscarRecurso();
+                    $usuarioController -> buscarUsuario();
                 break;
-
                 default:
                 $this -> controlador -> error404();
             }
 
         break;
-
 
 
 

@@ -1,18 +1,15 @@
 <?php
 
 require_once("header.php");
-require_once("../models/usuarios.php");
+require_once("models/usuarios.php");
 
-$usuarios = new Users();
 
 class Users{
 
     public function __construct(){
         $this -> usersModel = new Usuarios();
         $this -> header = new Header();
-        $this -> tablaAñadir();
-        $this -> tablaEditar();
-        $this -> pintarUsuarios();
+        //$this -> pintarUsuarios();
 
     }
 
@@ -76,6 +73,9 @@ class Users{
                 echo "</tbody>";
             echo "</table>";
 
+            $this -> tablaAñadir();
+            $this -> tablaEditar();
+            
             echo "<script src='../assets/js/usuarios.js'></script>";
 
         echo "</body>";
