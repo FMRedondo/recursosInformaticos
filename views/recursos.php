@@ -8,7 +8,7 @@ class Recursos{
 
     public function __construct(){
         $this -> RecursosController = new RecursosModel();
-        $this -> header = new Header();
+        //$this -> header = new Header();
         //$this -> pintarRecursos();
 
     }

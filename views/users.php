@@ -8,7 +8,7 @@ class Users{
 
     public function __construct(){
         $this -> usersModel = new Usuarios();
-        $this -> header = new Header();
+        //$this -> header = new Header();
         //$this -> pintarUsuarios();
 
     }

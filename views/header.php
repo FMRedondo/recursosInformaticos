@@ -4,6 +4,10 @@ class Header
 {
     public function __construct()
     {
+        $this -> pintarHeader();
+    }
+
+    public function pintarHeader(){
         echo "<!DOCTYPE html>";
         echo "<html lang='es'>";
             echo "<head>";

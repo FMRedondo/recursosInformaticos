@@ -2,7 +2,9 @@
 
 require_once("controllers/recursosController.php");
 require_once("controllers/usersController.php");
+require_once("controllers/tramosHorariosController.php");
 require_once("controller.php");
+require_once("views/header.php");
 
 
 
@@ -12,8 +14,10 @@ class Route{
         $this -> controlador = new Controller();
         $this -> basepath = implode('/', array_slice(explode('/', $_SERVER['SCRIPT_NAME']), 0, -1)) . '/';
         $this -> uri = substr($_SERVER['REQUEST_URI'], strlen($this->basepath));
+        $this -> header = new Header();
         $this -> segmentar($this -> uri);
         $this -> rutas($this -> segmentos, $this -> uri);
+        
     }
 
     public function segmentar($uri){
@@ -101,6 +105,13 @@ class Route{
                 $this -> controlador -> error404();
             }
 
+        break;
+
+        case $segmento[0] == "":
+
+            $horariosController = new TramosHorariosController();
+            $horariosController -> verCalendario();
+            
         break;
 
 

@@ -8,10 +8,24 @@ class TramosHorarios{
 
     public function __construct()
     {
-        $this -> header = new Header();
+        //$this -> header = new Header();
+    }
 
-        echo "Esta es la vista de tramos horarios";
+    public function pintarHorarios(){
+
     }
 
 
+    public function calendario(){
+        echo "<div id='calendario'></div>";
+        echo "<script src='assets/js/horarios.js'></script>";
+        echo "<script src='assets/plugin/calendario/lib/main.js'></script>";
+        echo "<link rel='stylesheet' href='assets/plugin/calendario/lib/main.css'>";
+
+        
+    }
+
 }
+
+?>
+
