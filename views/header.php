@@ -42,7 +42,10 @@ class Header
                             echo "<a class='nav-link' href='/usuarios'>Usuarios</a>";
                             echo "</li>";
                             echo "<li class='nav-item'>";
-                            echo "<a class='nav-link' href='/views/tramosHorarios.php'>Tramos Horarios</a>";
+                            echo "<a class='nav-link' href='/horarios'>Horarios</a>";
+                            echo "</li>";
+                            echo "<li class='nav-item'>";
+                            echo "<a class='nav-link' href='/reservas'>Reservas</a>";
                             echo "</li>";
                         echo "</ul>";
                     echo "</div>";

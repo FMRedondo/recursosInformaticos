@@ -12,6 +12,7 @@ class TramosHorariosController{
     }
 
     public function verVista(){
+       
         $this -> horario -> pintarHorarios();
     }
 

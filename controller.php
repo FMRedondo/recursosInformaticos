@@ -1,6 +1,5 @@
 <?php
 
-require_once ("view.php");
 require_once ("models/user.php");
 require_once ("models/security.php");
 require_once("views/error404.php");
@@ -16,7 +15,6 @@ class Controller
     public function __construct()
     {
         session_start(); // Si no se ha hecho en el index, claro
-        $this->view = new View(); // Vistas
         $this->user = new User(); // Modelo de usuarios
     }
 

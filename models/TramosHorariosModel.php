@@ -15,7 +15,7 @@ class TramosHorariosModel{
         $this -> conexion -> conectar();
         $sql = "SELECT * from tramoshorarios";
         $tramosHorarios = $this -> conexion -> ejecutarSQL($sql);
-        $this -> conexion -> cerrar;
+        $this -> conexion -> cerrar();
         return $tramosHorarios;
     }
 

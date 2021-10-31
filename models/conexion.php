@@ -67,6 +67,18 @@ class MySQLDB
             throw new Exception($error);
         }
     }
+
+    function numeroColumnas($sql)
+    {
+        $result = mysqli_query($this->connection, $sql);
+        $error = mysqli_error($this->connection);
+ 
+        if (empty($error)) {
+            return mysqli_num_rows($result);
+        } else {
+            throw new Exception($error);
+        }
+    }
  
     function cerrar()
     {

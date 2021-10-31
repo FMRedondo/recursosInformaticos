@@ -20,7 +20,7 @@ class Usuarios{
     public function buscarUsuario($id){
         $this -> conexion -> conectar();
         $sql = "SELECT * FROM users WHERE (id = $id)";
-        $usuario = $this -> conexion -> obtenerInformacion($sql);
+        $usuario = $this -> conexion -> ejecutarSQL($sql);
         $this -> conexion -> cerrar();
         return $usuario;
     }
@@ -28,7 +28,7 @@ class Usuarios{
     public function buscarUsuarios($busqueda){
         $this -> conexion -> conectar();
         $sql = "SELECT * FROM users WHERE email LIKE '%$busqueda%' OR name LIKE '%$busqueda%' OR phone LIKE '%$busqueda%'";
-        $usuarios = $this -> conexion -> obtenerInformacion($sql);
+        $usuarios = $this -> conexion -> ejecutarSQL($sql);
         $this -> conexion -> cerrar();
         return $usuarios;
     }
