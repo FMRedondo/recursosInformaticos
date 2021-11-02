@@ -25,6 +25,11 @@ class TramosHorariosController{
         return $añadir;
     }
 
+    public function listarTramos(){
+        $tramos = $this -> horariosModel -> listarHorarios();
+        return $tramos;
+    }
+
     public function eliminarHorario(){
         $id = $_POST['id'];
         $eliminarHorario = $this -> horariosModel -> eliminarHorario($id);
@@ -58,6 +63,20 @@ class TramosHorariosController{
 
     public function verCalendario(){
         $this -> horario -> calendario();
+    }
+
+    public function nombreTramo($id){
+        $nombre = $this -> horariosModel -> buscarHorario($id);
+
+        foreach($nombre as $tramo){
+            $dia = $tramo['diaSemana'];
+            $inicio = $tramo['horaInicio'];
+            $fin = $tramo['horaFin'];
+
+            $nombre = $dia ." ". $inicio ." ". $fin;
+            return $nombre;
+        }
+        
     }
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2021 a las 20:26:59
+-- Tiempo de generación: 02-11-2021 a las 23:17:30
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 7.4.20
 
@@ -96,10 +96,8 @@ CREATE TABLE `recursos` (
 --
 
 INSERT INTO `recursos` (`id`, `nombre`, `descripcion`, `localizacion`, `imagen`) VALUES
-(1, 'portatiles', 'carrito de poratiles', 'departamento de informatica', '/img/portatiles'),
-(2, 'routers', 'routers antiguos', 'clase 20', '/img/routers'),
-(3, 'monitores', 'monitores RGB 22\"', 'clase 22', '/img/monitores'),
-(4, 'proyector', 'proyector tactil 100\"', 'sotano', 'imagen.png');
+(103, 'Monitor 240hz', 'monitor con pocos HZ para karlos', 'casa karlos', ''),
+(106, 'Procesador Intel Pentium 3', 'procesador para hacer practicas', 'Aula 20', '');
 
 -- --------------------------------------------------------
 
@@ -111,10 +109,22 @@ CREATE TABLE `reservas` (
   `id` int(11) NOT NULL,
   `idRecurso` int(11) DEFAULT NULL,
   `idUsuario` int(11) DEFAULT NULL,
-  `idTramoHrario` int(11) DEFAULT NULL,
+  `idTramoHorario` int(11) DEFAULT NULL,
   `fecha` varchar(45) DEFAULT NULL,
   `comentarios` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `reservas`
+--
+
+INSERT INTO `reservas` (`id`, `idRecurso`, `idUsuario`, `idTramoHorario`, `fecha`, `comentarios`) VALUES
+(19, 106, 3, 4, '2021-12-21', 'ejemplo manolo 2'),
+(20, 103, 9, 4, '2021-11-09', 'monitores para clase'),
+(21, 106, 9, 7, '2021-11-24', 'wdqwer'),
+(22, 106, 9, 4, '2021-11-19', 'nm'),
+(23, 106, 3, 3, '2021-11-22', 'nn'),
+(24, 103, 3, 3, '2021-11-15', 'pruebas');
 
 -- --------------------------------------------------------
 
@@ -167,10 +177,25 @@ INSERT INTO `roles-users` (`idRol`, `idUser`) VALUES
 
 CREATE TABLE `tramoshorarios` (
   `id` int(11) NOT NULL,
-  `diaSemana` int(11) DEFAULT NULL,
+  `diaSemana` varchar(45) DEFAULT NULL,
   `horaInicio` varchar(45) DEFAULT NULL,
   `horaFin` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tramoshorarios`
+--
+
+INSERT INTO `tramoshorarios` (`id`, `diaSemana`, `horaInicio`, `horaFin`) VALUES
+(1, 'Lunes', '08:00', '09:00'),
+(2, 'Lunes', '09:00', '10:00'),
+(3, 'Lunes', '10:00', '11:00'),
+(4, 'Martes', '11:00', '12:00'),
+(5, 'Martes', '13:00', '14:00'),
+(6, 'Miercoles', '08:00', '09:00'),
+(7, 'Miercoles', '11:30', '12:30'),
+(8, 'Juevez', '10:00', '11:00'),
+(9, 'Viernes', '13:00', '14:00');
 
 -- --------------------------------------------------------
 
@@ -192,9 +217,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `photo`, `name`, `phone`) VALUES
-(1, 'pepe@iescelia.org', '1234', 'tioguapo.jpg', 'Pepe Ibáñez', '555 109 115'),
-(2, 'ana@iescelia.org', '1234', 'tiaguapa.jpg', 'Ana López', '555 989 231'),
-(3, 'info@fmredondo.com', '1234', 'fmredondo', 'Francisco Manuel Redondo Jimenez', '667264822');
+(3, 'info@fmredondo.com', '1234', 'fmredondo', 'Francisco Manuel Redondo Jimenez', '667264822'),
+(9, 'info@reto42.com', 'reto42', '', 'manu', '645192042');
 
 -- --------------------------------------------------------
 
@@ -281,13 +305,13 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT de la tabla `recursos`
 --
 ALTER TABLE `recursos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -299,13 +323,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `tramoshorarios`
 --
 ALTER TABLE `tramoshorarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

@@ -27,6 +27,10 @@ class recursosController{
         
     }
 
+    public function verRecursos(){
+        $recursos = $this -> recursosModel -> verRecursos();
+        return $recursos;
+    }
 
     public function añadirRecurso(){
 
@@ -111,6 +115,15 @@ class recursosController{
             echo "</form>";
             
         } 
+
+    }
+
+    public function nombreRecurso($id){
+        $recurso = $this -> recursosModel -> buscarRecurso($id);
+        foreach($recurso as $nombre){
+            $nombre = $nombre['nombre'];
+            return $nombre;
+        }
 
     }
 

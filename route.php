@@ -3,6 +3,7 @@
 require_once("controllers/recursosController.php");
 require_once("controllers/usersController.php");
 require_once("controllers/tramosHorariosController.php");
+require_once("controllers/reservasController.php");
 require_once("views/header.php");
 require_once("controller.php");
 
@@ -154,32 +155,32 @@ class Route{
         case $segmento[0] == "reservas":
 
             $numSeg = count($segmento);
-            $horariosController = new TramosHorariosController();
+            $reservasController = new ReservasController();
             
             switch($numSeg){
                 case $numSeg == 1 && $uri == "reservas" || $uri == "reservas/":
                     $this -> header = new Header();
-                    $horariosController -> verVista();
+                    $reservasController -> verVista();
                 break;
 
                 case $numSeg == 2 && $this -> segmentos[1] == "Depedit":
-                    $horariosController -> mostrarModificarHorario();
+                    $reservasController -> mostrarModificarReservas();
                 break;
 
                 case $numSeg == 2 && $this -> segmentos[1] == "edit":
-                    $horariosController -> modificarHorario();
+                    $reservasController -> modificarReserva();
                 break;
 
                 case $numSeg == 2 && $this -> segmentos[1] == "delete":
-                    $horariosController -> eliminarHorario();
+                    $reservasController -> eliminarReserva();
                 break;
 
                 case $numSeg == 2 && $this -> segmentos[1] == "add":
-                    $horariosController -> añadirHorario();
+                    $reservasController -> añadirReserva();
                 break;
 
                 case $numSeg == 2 && $this -> segmentos[1] == "search":
-                    $horariosController -> buscarHorario();
+                    $reservasController -> buscarReserva();
                 break;
                 default:
                 $this -> controlador -> error404();

@@ -15,7 +15,7 @@ class MySQLDB
         $this->host = "localhost";
         $this->usuario = "root";
         $this->pass = "";
-        $this->db = "recursosInformaticos";
+        $this->db = "recursosinformaticos";
     }
  
     function conectar(){
@@ -31,6 +31,18 @@ class MySQLDB
  
         if (mysqli_connect_errno()) {
             print("error al conectarse");
+        }
+    }
+
+    function numeroColumnas($sql)
+    {
+        $result = mysqli_query($this->connection, $sql);
+        $error = mysqli_error($this->connection);
+ 
+        if (empty($error)) {
+            return mysqli_num_rows($result);
+        } else {
+            throw new Exception($error);
         }
     }
  
@@ -68,17 +80,7 @@ class MySQLDB
         }
     }
 
-    function numeroColumnas($sql)
-    {
-        $result = mysqli_query($this->connection, $sql);
-        $error = mysqli_error($this->connection);
- 
-        if (empty($error)) {
-            return mysqli_num_rows($result);
-        } else {
-            throw new Exception($error);
-        }
-    }
+    
  
     function cerrar()
     {
@@ -89,4 +91,6 @@ class MySQLDB
     {
         return mysqli_insert_id($this -> connection);
     }
+
+  
 }

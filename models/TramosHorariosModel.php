@@ -48,6 +48,11 @@ class TramosHorariosModel{
         $this -> conexion -> cerrar();
     }
 
-
+    public function buscarHorario($id){
+        $this -> conexion -> conectar();
+        $sql = "SELECT * FROM tramosHorarios WHERE (id = $id)";
+        $tramo = $this -> conexion -> ejecutarSQL($sql);
+        return $tramo;
+    }
 
 }

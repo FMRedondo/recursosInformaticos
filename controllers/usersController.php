@@ -124,6 +124,15 @@ class usersController{
 
     }
 
+    public function nombreUsuario($id){
+        $usuarios = $this -> userModel -> buscarUsuario($id);
+
+        foreach($usuarios as $usuario){
+            $nombre = $usuario['name'];
+            return $nombre;
+        }
+    }
+
 /*
 
     public function procesarLogin()

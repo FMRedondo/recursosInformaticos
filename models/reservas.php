@@ -19,7 +19,7 @@ class ReservasModel{
 
     public function buscarReservas($busqueda){
         $this -> conexion -> conectar();
-        $sql = "SELECT * FROM reservas WHERE idUsuario LIKE '%$busqueda%' OR idRecurso LIKE '%$busqueda%' OR idTramoHorario LIKE '%$busqueda%' OR fecha LIKE '%$busqueda%'"; 
+        $sql = "SELECT * FROM reservas WHERE idUsuario LIKE '%$busqueda%' OR idRecurso LIKE '%$busqueda%' OR idTramoHorario LIKE '%$busqueda%' OR fecha LIKE '%$busqueda%' OR comentarios LIKE '%$busqueda%'"; 
         $busqueda = $this -> conexion -> ejecutarSQL($sql);
         $this -> conexion -> cerrar();
         return $busqueda;
@@ -36,13 +36,14 @@ class ReservasModel{
     public function eliminarReserva($idReserva){
         $this -> conexion -> conectar();
         $sql = "DELETE FROM reservas WHERE (id = $idReserva)";
+        $this -> conexion -> ejecutarSQL($sql);
         $this -> conexion -> cerrar();
     }
 
 
     public function comprobarReserva($idRecurso, $idTramo, $fecha){
         $this -> conexion -> conectar();
-        $sql = "SELECT * FROM reservas WHERE idRecurso = $idRecurso AND idTramoHorario = $idTramo AND fecha = $fecha";
+        $sql = "SELECT * FROM reservas WHERE idRecurso = $idRecurso AND idTramoHorario = $idTramo AND fecha = '$fecha' ";
         $numColumnas = $this -> conexion -> numeroColumnas($sql);
         if ($numColumnas != 0){
             return false;
@@ -51,18 +52,19 @@ class ReservasModel{
         else{
             return true;
         }
+
+        $this -> conexion -> cerrar();
     }
 
     public function añadirReserva($idRecurso, $idUsuario, $idTramo, $fecha, $comentario){
         $comprobar = $this -> comprobarReserva($idRecurso, $idTramo, $fecha);
-
         if($comprobar){
             $this -> conexion -> conectar();
             $sql = "INSERT INTO reservas (idRecurso, idUsuario, idTramoHorario, fecha, comentarios) VALUES($idRecurso,$idUsuario, $idTramo, '$fecha', '$comentario')";
             $this -> conexion -> ejecutarSQL($sql);
-            $ultimoID = $this -> conexion -> obtenerUltimoId();
+            //$ultimoID = $this -> conexion -> obtenerUltimoId();
             $this -> conexion -> cerrar();
-            return $ultimoID;
+            //return $ultimoID;
         }
 
         else{
@@ -75,7 +77,7 @@ class ReservasModel{
 
         if($comprobar){
             $this -> conexion -> conectar();
-            $sql = "UPDATE reservas SET idRecurso = $idRecurso, idUsuario = $idUsuario, idTramo = $idTramo, fecha = '$fecha', comentarios = '$comentario' WHERE (id = $id)";
+            $sql = "UPDATE reservas SET idRecurso = $idRecurso, idUsuario = $idUsuario, idTramoHorario = $idTramo, fecha = '$fecha', comentarios = '$comentario' WHERE (id = $id)";
             $this -> conexion -> ejecutarSQL($sql);
             $this -> conexion -> cerrar();
         }
