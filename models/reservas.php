@@ -62,9 +62,9 @@ class ReservasModel{
             $this -> conexion -> conectar();
             $sql = "INSERT INTO reservas (idRecurso, idUsuario, idTramoHorario, fecha, comentarios) VALUES($idRecurso,$idUsuario, $idTramo, '$fecha', '$comentario')";
             $this -> conexion -> ejecutarSQL($sql);
-            //$ultimoID = $this -> conexion -> obtenerUltimoId();
+            $ultimoID = $this -> conexion -> obtenerUltimoId();
             $this -> conexion -> cerrar();
-            //return $ultimoID;
+            return $ultimoID;
         }
 
         else{
