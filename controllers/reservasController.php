@@ -51,15 +51,20 @@ public function buscarReserva(){
         $fecha = $reserva['fecha'];
         $comentarios = $reserva['comentarios'];
 
+
+        $nombreRecurso = $this -> recursos -> nombreRecurso($idRecurso);
+        $nombreUsuario = $this -> usuarios -> nombreUsuario($idUsuario);
+        $nombreTramos = $this -> tramos -> nombreTramo($idTramoHorario);
+
         echo "<tr id='$id'>";
             echo "<th class='p-3' scope='row' class='p-3'>$id</th>";
-            echo "<td class='p-3 nombre'>$idRecurso</td>";
-            echo "<td class='p-3 descripcion'>$idUsuario</td>";
-            echo "<td class='p-3 localizacion'>$idTramoHorario</td>";
+            echo "<td class='p-3 nombre'>$nombreRecurso</td>";
+            echo "<td class='p-3 descripcion'>$nombreUsuario</td>";
+            echo "<td class='p-3 localizacion'>$nombreTramos</td>";
             echo "<td class='p-3'>$fecha</td>";
             echo "<td class='p-3'>$comentarios</td>";
-            echo "<td class='p-3'><a class='btn btn-success mostrarEditarRecurso' data-id='$id'>Editar</a></td>";
-            echo "<td class='p-3'><a class='btn btn-danger eliminarRecursos' data-id='$id'>Eliminar</a></td>";
+            echo "<td class='p-3'><a class='btn btn-success mostrarEditarReserva' data-id='$id'>Editar</a></td>";
+            echo "<td class='p-3'><a class='btn btn-danger eliminarReservas' data-id='$id'>Eliminar</a></td>";
         echo "</tr>";
     }
 }
