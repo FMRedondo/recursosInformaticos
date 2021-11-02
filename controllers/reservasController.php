@@ -16,7 +16,7 @@ public function __construct()
     $this -> usuarios = new usersController();
     $this -> tramos = new TramosHorariosController();
 
-    $this -> reservasModel -> añadirReserva(2,1,4, "2021-11-16", "Routers de prueba para alumnos de ASIR");
+    
 }
 
 public function verVista(){

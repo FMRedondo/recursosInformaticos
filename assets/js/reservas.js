@@ -9,7 +9,7 @@ function buscarReserva(){
         $.ajax({
 
             data: parametros,
-            url: 'reservas/search',
+            url: '/reservas/search',
             type: 'post',
             
             success: function (response) {
@@ -51,7 +51,7 @@ function añadirReserva(){
     $.ajax({
 
         data: parametros,
-        url: 'reservas/add',
+        url: '/reservas/add',
         type: 'post',
         
         success: function (response) {

@@ -58,7 +58,7 @@ class ReservasModel{
 
     public function añadirReserva($idRecurso, $idUsuario, $idTramo, $fecha, $comentario){
         $comprobar = $this -> comprobarReserva($idRecurso, $idTramo, $fecha);
-        if($comprobar == true){
+        if($comprobar){
             $this -> conexion -> conectar();
             $sql = "INSERT INTO reservas (idRecurso, idUsuario, idTramoHorario, fecha, comentarios) VALUES($idRecurso,$idUsuario, $idTramo, '$fecha', '$comentario')";
             $this -> conexion -> ejecutarSQL($sql);
@@ -75,7 +75,7 @@ class ReservasModel{
     public function ModificarReserva($id, $idRecurso, $idUsuario, $idTramo, $fecha, $comentario){
         $comprobar = $this -> comprobarReserva($idRecurso, $idTramo, $fecha);
 
-        if($comprobar == true){
+        if($comprobar){
             $this -> conexion -> conectar();
             $sql = "UPDATE reservas SET idRecurso = $idRecurso, idUsuario = $idUsuario, idTramoHorario = $idTramo, fecha = '$fecha', comentarios = '$comentario' WHERE (id = $id)";
             $this -> conexion -> ejecutarSQL($sql);
